@@ -1,0 +1,51 @@
+<div id="app">
+  <h1 style="text-align: center">Where to today?</h1>
+  <div class="card-container">
+    <div class="card" (click)="choose_place()">
+      <mat-icon>auto_awesome</mat-icon>
+      <span>Random</span>
+    </div>
+
+    <div class="card" (click)="choose_place_by_attribute('coffee')">
+      <mat-icon aria-hidden="false" aria-label="Coffee icon">coffee</mat-icon>
+      <span>Coffee</span>
+    </div>
+
+    <div class="card" (click)="choose_place_by_attribute('nature')">
+      <mat-icon aria-hidden="false" aria-label="Tree icon">park</mat-icon>
+      <span>Nature</span>
+    </div>
+
+    <div
+      class="card"
+      target="_blank"
+      rel="noopener"
+      (click)="choose_place_by_attribute('alcohol')"
+    >
+      <mat-icon aria-hidden="false" aria-label="Drink icon">local_bar</mat-icon>
+
+      <span>Drinks</span>
+    </div>
+    <div
+      class="card"
+      target="_blank"
+      rel="noopener"
+      (click)="choose_place_by_attribute('young_fancy')"
+    >
+      <mat-icon aria-hidden="false" aria-label="shopping bag icon"
+        >shopping_bag</mat-icon
+      >
+      <span>Fancy</span>
+    </div>
+  </div>
+  <div class="suggestions">
+    <mat-card
+      *ngFor="let suggestion of suggestions"
+      class="mat-elevation-z0 "
+      [ngClass]="getSuggestionClass(suggestion)"
+    >
+      {{ suggestion.jp_name }}
+    </mat-card>
+  </div>
+</div>
+<router-outlet></router-outlet>
