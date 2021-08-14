@@ -52,7 +52,7 @@ svg.material-icons {
   display: flex;
   flex-wrap: wrap;
   justify-content: start;
-  padding-top: 20px;
+  padding-top: 10px;
   margin: auto;
   max-width: 800px;
 }
@@ -148,14 +148,9 @@ footer a {
 @media screen and (max-width: 767px) {
   .card {
     width: 100%;
-    margin: auto;
-  }
-
-  .card:not(.highlight-card) {
     height: 16px;
-    margin: 8px auto;
+    margin: 4px auto;
   }
-
   .card.highlight-card span {
     margin-left: 72px;
   }
