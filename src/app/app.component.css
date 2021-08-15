@@ -8,17 +8,12 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 8px 0;
-}
+header {
+  display: flex;
+  align-items: center;
 
-p {
-  margin: 0;
+  /* Remove the next line if you want the span to appear next to the h1 */
+  justify-content: space-between;
 }
 
 .spacer {
@@ -71,10 +66,13 @@ svg.material-icons {
   transition: all 0.2s ease-in-out;
   line-height: 24px;
 }
-.card-container .card:not(.highlight-card) {
+a,.card-container .card:not(.highlight-card) {
   cursor: pointer;
 }
 
+.active-lang{
+  color: #1976d2;
+}
 .card-container .card:not(.highlight-card):hover {
   transform: translateY(-3px);
   box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
@@ -98,6 +96,9 @@ svg.material-icons {
   margin-left: 60px;
 }
 
+
+a:visited,
+a:hover,
 .card:first-child,
 .card:visited,
 .card:hover {

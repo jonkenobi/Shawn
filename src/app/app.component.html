@@ -1,5 +1,16 @@
 <div id="app">
-  <h1 style="text-align: center">Where to today?</h1>
+  <header>
+    <h2 style="text-align: center; margin: auto; height: 1.25rem">
+      {{ getTitle() }}
+    </h2>
+  </header>
+  <div style="text-align: right; margin-right: 15px; font-size: small">
+    <a [ngClass]="{ 'active-lang': lang == 'JP' }" (click)="selectLang('JP')"
+      >JP</a
+    >|<a [ngClass]="{ 'active-lang': lang == 'EN' }" (click)="selectLang('EN')"
+      >EN</a
+    >
+  </div>
   <div class="card-container">
     <div class="card" (click)="choose_place()">
       <mat-icon>auto_awesome</mat-icon>
@@ -41,10 +52,10 @@
   <div class="suggestions">
     <mat-card
       *ngFor="let suggestion of suggestions"
-      class="mat-elevation-z0 "
+      class="mat-elevation-z0"
       [ngClass]="getSuggestionClass(suggestion)"
     >
-      {{ suggestion.jp_name }}
+      {{ suggestionName(suggestion) }}
     </mat-card>
   </div>
 </div>
