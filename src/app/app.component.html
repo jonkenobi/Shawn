@@ -27,36 +27,41 @@
       <span>Nature</span>
     </div>
 
-    <div
-      class="card"
-      target="_blank"
-      rel="noopener"
-      (click)="choose_place_by_attribute('alcohol')"
-    >
+    <div class="card" (click)="choose_place_by_attribute('alcohol')">
       <mat-icon aria-hidden="false" aria-label="Drink icon">local_bar</mat-icon>
 
       <span>Drinks</span>
     </div>
-    <div
-      class="card"
-      target="_blank"
-      rel="noopener"
-      (click)="choose_place_by_attribute('young_fancy')"
-    >
+    <div class="card" (click)="choose_place_by_attribute('young_fancy')">
       <mat-icon aria-hidden="false" aria-label="shopping bag icon"
         >shopping_bag</mat-icon
       >
       <span>Shopping</span>
     </div>
+    <div class="card" (click)="choose_place_by_attribute('detox')">
+      <mat-icon aria-hidden="false" aria-label="man running icon"
+        >directions_run</mat-icon
+      >
+      <span>Escape</span>
+    </div>
   </div>
   <div class="suggestions">
-    <mat-card
-      *ngFor="let suggestion of suggestions"
-      class="mat-elevation-z0 suggestion"
-      [ngClass]="getSuggestionClass(suggestion)"
-    >
-      {{ suggestionName(suggestion) }}
-    </mat-card>
+    <ng-container *ngIf="suggestions">
+      <mat-expansion-panel
+        *ngFor="let suggestion of suggestions"
+        class="mat-elevation-z0 suggestion"
+      >
+        <mat-expansion-panel-header [ngClass]="getSuggestionClass(suggestion)">
+          <mat-panel-title>
+            {{ suggestionName(suggestion) }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+      </mat-expansion-panel>
+    </ng-container>
+  </div>
+  <div style="top: 100%; padding-bottom: 10px; left: 30%; position: absolute">
+    <app-map></app-map>
+    <app-feedback></app-feedback>
   </div>
 </div>
 <router-outlet></router-outlet>

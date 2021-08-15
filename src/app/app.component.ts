@@ -42,15 +42,42 @@ export class AppComponent {
       young_fancy: 3,
     },
     { en_name: 'Ebisu', jp_name: '恵比寿', coffee: 5, alcohol: 4 },
-    { en_name: 'Kouenji', jp_name: '高円寺', alcohol: 4,  },
+    { en_name: 'Kouenji', jp_name: '高円寺', alcohol: 4 },
     { en_name: 'Kichijoji', jp_name: '吉祥寺', alcohol: 4, young_fancy: 5 },
-    { en_name: 'Tamagawa', jp_name: '多摩川', nature: 5 },
-    { en_name: 'Yokohama', jp_name: '横浜', coffee: 3, nature: 4, alcohol: 4 },
-    { en_name: 'Hakone', jp_name: '箱根', coffee: 1, nature: 5, alcohol: 0 },
+    {
+      en_name: 'Jiyugaoka',
+      jp_name: '自由が丘',
+      alcohol: 3,
+      coffee: 3,
+      young_fancy: 4,
+    },
+    { en_name: 'Tamagawa', jp_name: '多摩川', nature: 5, detox: 5 },
+    {
+      en_name: 'Yokohama',
+      jp_name: '横浜',
+      coffee: 3,
+      nature: 4,
+      alcohol: 4,
+      detox: 4,
+    },
+    {
+      en_name: 'Hakone',
+      jp_name: '箱根',
+      coffee: 1,
+      nature: 5,
+      alcohol: 0,
+      detox: 5,
+    },
+    {
+      en_name: 'Kamakura/Enoshima',
+      jp_name: '鎌倉・江ノ島',
+      nature: 5,
+      detox: 5,
+    },
   ];
-  suggestions: any = [this.places];
+  suggestions: any = [];
   selected_attr: string = 'random';
-  lang = 'EN';
+  lang = 'JP';
   ngInit() {
     this.choose_place();
   }
@@ -91,18 +118,17 @@ export class AppComponent {
     this.lang = lang;
   }
 
-  getTitle():string{
-    return this.lang=='JP'?'今日はとこへ行く?':'Where to today?';
+  getTitle(): string {
+    return this.lang == 'JP' ? '今日はとこへ行く?' : 'Where to today?';
   }
-  suggestionName(suggestion:any):string{
-    if (this.lang=='EN'){
-      return suggestion.en_name
+  suggestionName(suggestion: any): string {
+    if (this.lang == 'EN') {
+      return suggestion.en_name;
     }
-    if (this.lang=='JP'){
-      return suggestion.jp_name
-    }
-    else{
-      return suggestion.en_name
+    if (this.lang == 'JP') {
+      return suggestion.jp_name;
+    } else {
+      return suggestion.en_name;
     }
   }
 }

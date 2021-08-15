@@ -1,0 +1,13 @@
+.feedback-icon {
+  cursor: pointer;
+}
+
+.positive-feedback-icon {
+  color: #1976d2;
+}
+
+.material-icons{
+  display: inline-flex;
+  vertical-align: top;
+  font-size:20px
+}
