@@ -85,7 +85,10 @@ export class AppComponent {
     this.selected_attr = 'random';
     do {
       var new_random_place = this.get_random(this.places);
-    } while (this.suggestions[0]['en_name'] == new_random_place[0]['en_name']);
+    } while (
+      this.suggestions.length !== 0 &&
+      this.suggestions[0]['en_name'] == new_random_place[0]['en_name']
+    );
     this.suggestions = new_random_place;
   }
   choose_place_by_attribute(attr: string) {
