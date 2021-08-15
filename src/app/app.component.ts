@@ -44,6 +44,13 @@ export class AppComponent {
     { en_name: 'Ebisu', jp_name: '恵比寿', coffee: 5, alcohol: 4 },
     { en_name: 'Kouenji', jp_name: '高円寺', alcohol: 4 },
     { en_name: 'Kichijoji', jp_name: '吉祥寺', alcohol: 4, young_fancy: 5 },
+    {
+      en_name: 'Jiyugaoka',
+      jp_name: '自由が丘',
+      alcohol: 3,
+      coffee: 3,
+      young_fancy: 4,
+    },
     { en_name: 'Tamagawa', jp_name: '多摩川', nature: 5, detox: 5 },
     {
       en_name: 'Yokohama',
@@ -66,11 +73,11 @@ export class AppComponent {
       jp_name: '鎌倉・江ノ島',
       nature: 5,
       detox: 5,
-    }
+    },
   ];
-  suggestions: any = [this.places];
+  suggestions: any = [];
   selected_attr: string = 'random';
-  lang = 'EN';
+  lang = 'JP';
   ngInit() {
     this.choose_place();
   }
