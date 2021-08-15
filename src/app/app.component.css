@@ -115,7 +115,7 @@ a:hover,
 
 .suggestion{
   margin: 2px auto;
-
+  height:20px;
 }
 
 .first-pick-suggestion {
