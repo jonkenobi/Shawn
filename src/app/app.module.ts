@@ -1,4 +1,3 @@
-import { MaterialModule } from './material.module';
 import { MatListModule } from '@angular/material/list';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -19,7 +18,7 @@ import { FeedbackComponent } from './feedback/feedback.component';
     NoopAnimationsModule,
     MatCardModule,
     MatIconModule,
-    MaterialModule,
+
     MatExpansionModule
   ],
   providers: [],
