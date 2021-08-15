@@ -15,7 +15,7 @@ export class AppComponent {
       jp_name: '渋谷',
       attribute_labels: ['young'],
       coffee: 4,
-      young_fancy: 4,
+      young_fancy: 5,
       alcohol: 5,
     },
     {
@@ -23,7 +23,7 @@ export class AppComponent {
       jp_name: '新宿',
       coffee: 2,
       nature: 2,
-      young_fancy: 4,
+      young_fancy: 5,
       alcohol: 5,
     },
     {
@@ -42,7 +42,7 @@ export class AppComponent {
       young_fancy: 3,
     },
     { en_name: 'Ebisu', jp_name: '恵比寿', coffee: 5, alcohol: 4 },
-    { en_name: 'Kouenji', jp_name: '高円寺', alcohol: 4, young_fancy: 5 },
+    { en_name: 'Kouenji', jp_name: '高円寺', alcohol: 4,  },
     { en_name: 'Kichijoji', jp_name: '吉祥寺', alcohol: 4, young_fancy: 5 },
     { en_name: 'Tamagawa', jp_name: '多摩川', nature: 5 },
     { en_name: 'Yokohama', jp_name: '横浜', coffee: 3, nature: 4, alcohol: 4 },

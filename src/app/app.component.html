@@ -1,6 +1,6 @@
 <div id="app">
   <header>
-    <h2 style="text-align: center; margin: auto; height: 1.25rem">
+    <h2 style="text-align: center; margin: auto; height: 2rem">
       {{ getTitle() }}
     </h2>
   </header>
@@ -52,7 +52,7 @@
   <div class="suggestions">
     <mat-card
       *ngFor="let suggestion of suggestions"
-      class="mat-elevation-z0"
+      class="mat-elevation-z0 suggestion"
       [ngClass]="getSuggestionClass(suggestion)"
     >
       {{ suggestionName(suggestion) }}
