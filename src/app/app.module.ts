@@ -7,8 +7,13 @@ import { AppComponent } from './app.component';
 
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
+// import { MapComponent } from './map/map.component';
+import { FeedbackComponent } from './feedback/feedback.component';
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [		AppComponent,
+      // MapComponent,
+      FeedbackComponent
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,

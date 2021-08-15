@@ -27,26 +27,22 @@
       <span>Nature</span>
     </div>
 
-    <div
-      class="card"
-      target="_blank"
-      rel="noopener"
-      (click)="choose_place_by_attribute('alcohol')"
-    >
+    <div class="card" (click)="choose_place_by_attribute('alcohol')">
       <mat-icon aria-hidden="false" aria-label="Drink icon">local_bar</mat-icon>
 
       <span>Drinks</span>
     </div>
-    <div
-      class="card"
-      target="_blank"
-      rel="noopener"
-      (click)="choose_place_by_attribute('young_fancy')"
-    >
+    <div class="card" (click)="choose_place_by_attribute('young_fancy')">
       <mat-icon aria-hidden="false" aria-label="shopping bag icon"
         >shopping_bag</mat-icon
       >
       <span>Shopping</span>
+    </div>
+    <div class="card" (click)="choose_place_by_attribute('detox')">
+      <mat-icon aria-hidden="false" aria-label="man running icon"
+        >directions_run</mat-icon
+      >
+      <span>Escape</span>
     </div>
   </div>
   <div class="suggestions">
@@ -58,5 +54,6 @@
       {{ suggestionName(suggestion) }}
     </mat-card>
   </div>
+  <app-feedback></app-feedback>
 </div>
 <router-outlet></router-outlet>
