@@ -12,7 +12,7 @@
     >
   </div>
   <div class="card-container">
-    <div class="card" (click)="choose_place()">
+    <div class="card" (click)="setRandomArea()">
       <mat-icon>auto_awesome</mat-icon>
       <span>Random</span>
     </div>
@@ -46,7 +46,20 @@
     </div>
   </div>
   <div class="suggestions">
-    <ng-container *ngIf="suggestions">
+    <ng-container *ngIf="selected_attr=='random'">
+      <mat-expansion-panel
+        class="mat-elevation-z0 suggestion"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+              {{randomAreaName}}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+      </mat-expansion-panel>
+    </ng-container>
+  </div>
+  <div class="suggestions">
+    <ng-container *ngIf="suggestions&&selected_attr!=='random'">
       <mat-expansion-panel
         *ngFor="let suggestion of suggestions"
         class="mat-elevation-z0 suggestion"

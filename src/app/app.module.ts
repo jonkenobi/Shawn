@@ -9,16 +9,20 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { MapComponent } from './map/map.component';
 import { FeedbackComponent } from './feedback/feedback.component';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientJsonpModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [AppComponent, MapComponent, FeedbackComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MatListModule,
+    HttpClientModule,
     NoopAnimationsModule,
+    HttpClientJsonpModule,
     MatCardModule,
     MatIconModule,
-
     MatExpansionModule
   ],
   providers: [],
