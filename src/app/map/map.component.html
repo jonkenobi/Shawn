@@ -1,4 +1,8 @@
-<p>
+<p *ngIf="!isLocationAccessPermissionDenied">
   Map works!
-  {{position}}
+  {{ position }}
+</p>
+
+<p *ngIf="isLocationAccessPermissionDenied">
+  Allow us location access for better recommendations! :)
 </p>

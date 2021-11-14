@@ -1,12 +1,17 @@
-import { Component } from '@angular/core';
+import { map } from 'rxjs/operators';
+import { BackendService } from './services/backend-service';
+import { Component, OnInit  } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
+  providers: [BackendService],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  constructor(private backendService: BackendService) {}
   title = 'Shawn';
+
   places: {
     [key: string]: any;
   }[] = [
@@ -75,22 +80,38 @@ export class AppComponent {
       detox: 5,
     },
   ];
+
+  allAreas = [];
+  randomAreaName: string = '';
   suggestions: any = [];
   selected_attr: string = 'random';
   lang = 'JP';
-  ngInit() {
-    this.choose_place();
+  userPosition: string = '';
+
+  ngOnInit() {
+    this.setRandomArea();
   }
-  choose_place() {
+
+  updatePostion(position: string) {
+    this.userPosition = position;
+  }
+  setRandomArea() {
     this.selected_attr = 'random';
-    do {
-      var new_random_place = this.get_random(this.places);
-    } while (
-      this.suggestions.length !== 0 &&
-      this.suggestions[0]['en_name'] == new_random_place[0]['en_name']
-    );
-    this.suggestions = new_random_place;
+    this.backendService
+      .getAreas()
+      .subscribe((areas) => {
+        this.allAreas=areas;
+        //temp logic
+         do {
+          var new_random_place = this.getRandom(this.allAreas);
+        } while (
+          this.randomAreaName == new_random_place.area_name
+        );
+        this.randomAreaName = new_random_place.area_name;
+      }
+        );
   }
+
   choose_place_by_attribute(attr: string) {
     this.selected_attr = attr;
     this.suggestions = this.places
@@ -98,9 +119,10 @@ export class AppComponent {
       .sort((a, b) => b[attr] - a[attr])
       .slice(0, 5);
   }
-  get_random(list: any) {
+
+  getRandom(list: any) {
     const random_place = list[Math.floor(Math.random() * list.length)];
-    return Array.of(random_place);
+    return random_place;
   }
 
   getSuggestionClass(suggestion: any): string {
@@ -116,6 +138,7 @@ export class AppComponent {
       return '';
     }
   }
+
 
   selectLang(lang: string) {
     this.lang = lang;
