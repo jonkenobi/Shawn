@@ -6,7 +6,7 @@ resource "aws_api_gateway_rest_api" "api_gateway_rest_api" {
     types = ["REGIONAL"]
   }
 
-  body = templatefile("../openapi-api.yaml", {
+  body = templatefile("../openapi.yaml", {
     title                                       = var.api_name
     get_area_function_invoke_arn = aws_lambda_function.get_areas.invoke_arn
     # get_input_template_function_invoke_arn      = aws_lambda_function.get_input_template.invoke_arn

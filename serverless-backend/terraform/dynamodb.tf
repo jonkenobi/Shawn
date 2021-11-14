@@ -25,8 +25,8 @@ resource "aws_dynamodb_table" "shawn_locations" {
 }
 
 resource "aws_dynamodb_table_item" "init_data" {
-  table_name = aws_dynamodb_table.area_table
-  hash_key   = aws_dynamodb_table.area_table.hash_key
+  table_name = aws_dynamodb_table.shawn_areas
+  hash_key   = aws_dynamodb_table.shawn_areas.hash_key
 
   item = <<ITEM
 {
