@@ -89,7 +89,13 @@ export class AppComponent implements OnInit {
   userPosition: string = '';
 
   ngOnInit() {
-    this.setRandomArea();
+    this.backendService
+      .getAreas()
+      .subscribe((areas) => {
+        this.allAreas=areas;
+        this.setRandomArea();
+      });
+
   }
 
   updatePostion(position: string) {
@@ -97,19 +103,14 @@ export class AppComponent implements OnInit {
   }
   setRandomArea() {
     this.selected_attr = 'random';
-    this.backendService
-      .getAreas()
-      .subscribe((areas) => {
-        this.allAreas=areas;
-        //temp logic
-         do {
-          var new_random_place = this.getRandom(this.allAreas);
-        } while (
-          this.randomAreaName == new_random_place.area_name
-        );
-        this.randomAreaName = new_random_place.area_name;
-      }
-        );
+
+    //temp logic
+    do {
+        var new_random_place = this.getRandom(this.allAreas);
+    } while (
+        this.randomAreaName == new_random_place.area_name
+    );
+    this.randomAreaName = new_random_place.area_name;
   }
 
   choose_place_by_attribute(attr: string) {
@@ -138,7 +139,6 @@ export class AppComponent implements OnInit {
       return '';
     }
   }
-
 
   selectLang(lang: string) {
     this.lang = lang;
