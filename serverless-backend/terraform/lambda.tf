@@ -2,11 +2,17 @@ resource "aws_lambda_function" "get_areas" {
   function_name = var.shawn_get_areas_function_name
   filename      = "../app/${var.shawn_get_areas_function_name}.zip"
 
-  # "var.frankii_get_question_categories_function_name" is the filename within the zip file
-  #(${var.frankii_get_question_categories_function_name}.js) and "handler"
-  # is the name of the property under which the handler function was
-  # exported in that file.
   handler = "${var.shawn_get_areas_function_name}.handler"
+  runtime = "nodejs12.x"
+
+  role = aws_iam_role.my_lambda_iam_role.arn
+}
+
+resource "aws_lambda_function" "get_locations" {
+  function_name = var.shawn_get_locations_function_name
+  filename      = "../app/${var.shawn_get_locations_function_name}.zip"
+
+  handler = "${var.shawn_get_locations_function_name}.handler"
   runtime = "nodejs12.x"
 
   role = aws_iam_role.my_lambda_iam_role.arn
