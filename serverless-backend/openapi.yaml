@@ -19,7 +19,7 @@ paths:
   /user/areas:
     get:
       tags:
-        - ""
+        - "Areas"
       summary: "登録された地域一覧を取得"
       responses:
         200:
@@ -53,7 +53,7 @@ paths:
   /user/locations:
     get:
       tags:
-        - ""
+        - "Locations"
       summary: "登録された場所一覧を取得"
       responses:
         200:
@@ -63,7 +63,7 @@ paths:
               schema:
                 type: "array"
                 items:
-                  $ref: "#/components/schemas/Area"
+                  $ref: "#/components/schemas/Location"
       x-amazon-apigateway-integration:
         uri: ${get_locations_function_invoke_arn}
         httpMethod: "POST"
@@ -93,12 +93,15 @@ components:
         area_name:
           type: "string"
           description: ""
-    Area:
+    Location:
       type: "object"
       properties:
-        area_name:
+        location_name:
           type: "string"
-          description: ""
+        google_maps_url:
+          type: "string"
+        area:
+          type: "string"
 
 
   responses:

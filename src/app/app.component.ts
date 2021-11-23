@@ -1,6 +1,6 @@
 import { map } from 'rxjs/operators';
 import { BackendService } from './services/backend-service';
-import { Component, OnInit  } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -82,6 +82,7 @@ export class AppComponent implements OnInit {
   ];
 
   allAreas = [];
+  allLocations = [];
   randomAreaName: string = '';
   suggestions: any = [];
   selected_attr: string = 'random';
@@ -89,12 +90,14 @@ export class AppComponent implements OnInit {
   userPosition: string = '';
 
   ngOnInit() {
-    this.backendService
-      .getAreas()
-      .subscribe((areas) => {
-        this.allAreas=areas;
-        this.setRandomArea();
-      });
+    this.backendService.getAreas().subscribe((areas) => {
+      this.allAreas = areas;
+      this.setRandomArea();
+    });
+    this.backendService.getAllLocations().subscribe((locations) => {
+      this.allLocations = locations;
+      console.log(this.allLocations);
+    });
   }
 
   updatePostion(position: string) {
@@ -104,10 +107,8 @@ export class AppComponent implements OnInit {
     this.selected_attr = 'random';
 
     do {
-        var new_random_place = this.getRandom(this.allAreas);
-    } while (
-        this.randomAreaName == new_random_place.area_name
-    );
+      var new_random_place = this.getRandom(this.allAreas);
+    } while (this.randomAreaName == new_random_place.area_name);
     this.randomAreaName = new_random_place.area_name;
   }
 
@@ -137,7 +138,6 @@ export class AppComponent implements OnInit {
       return '';
     }
   }
-
 
   selectLang(lang: string) {
     this.lang = lang;
