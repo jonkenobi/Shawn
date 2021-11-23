@@ -95,7 +95,6 @@ export class AppComponent implements OnInit {
         this.allAreas=areas;
         this.setRandomArea();
       });
-
   }
 
   updatePostion(position: string) {
@@ -104,7 +103,6 @@ export class AppComponent implements OnInit {
   setRandomArea() {
     this.selected_attr = 'random';
 
-    //temp logic
     do {
         var new_random_place = this.getRandom(this.allAreas);
     } while (
@@ -139,6 +137,7 @@ export class AppComponent implements OnInit {
       return '';
     }
   }
+
 
   selectLang(lang: string) {
     this.lang = lang;
