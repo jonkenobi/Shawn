@@ -52,6 +52,7 @@ resource "aws_iam_role_policy_attachment" "role_policy_attachment" {
 resource "aws_lambda_permission" "apigw_lambda_permission" {
   for_each = toset([
     aws_lambda_function.get_areas.function_name,
+    aws_lambda_function.get_locations.function_name,
   ])
 
   statement_id = "AllowAPIGatewayInvoke"

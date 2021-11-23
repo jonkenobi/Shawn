@@ -24,3 +24,11 @@ Just take the base_url output from Terraform, refer to open.yaml, and you can us
 
 References:
 https://learn.hashicorp.com/tutorials/terraform/lambda-api-gateway
+
+
+### To add new functions 
+1. Add the api in openapi.yaml
+2. Write the lambda.js function, zip it
+3. Create lambda function block in lambda.tf, add it in the iam_role "toSet"
+4. Create the function_name as a variable name in variables.tf
+5. Add dynamodb table if needed
