@@ -23,18 +23,6 @@ resource "aws_dynamodb_table" "shawn_locations" {
     type = "S"
   }
 
-  attribute {
-    name = "location_name"
-    type = "S"
-  }
-    attribute {
-    name = "google_maps_url"
-    type = "S"
-  }
-    attribute {
-    name = "area"
-    type = "S"
-  }
 }
 
 resource "aws_dynamodb_table_item" "init_data" {
