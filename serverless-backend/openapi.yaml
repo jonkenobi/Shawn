@@ -19,7 +19,7 @@ paths:
   /user/areas:
     get:
       tags:
-        - ""
+        - "Areas"
       summary: "登録された地域一覧を取得"
       responses:
         200:
@@ -50,7 +50,40 @@ paths:
               method.response.header.Access-Control-Allow-Methods: "'GET'"
               method.response.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
               method.response.header.Access-Control-Allow-Origin: "'*'"
-
+  /user/locations:
+    get:
+      tags:
+        - "Locations"
+      summary: "登録された場所一覧を取得"
+      responses:
+        200:
+          description: "成功時のレスポンス"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/Location"
+      x-amazon-apigateway-integration:
+        uri: ${get_locations_function_invoke_arn}
+        httpMethod: "POST"
+        type: "aws_proxy"
+    options:
+      description: Allow CORS
+      responses:
+        200:
+          $ref: '#/components/responses/cors'
+      x-amazon-apigateway-integration:
+        type: mock
+        requestTemplates:
+          application/json: "{ \"statusCode\": 200 }"
+        responses:
+          default:
+            statusCode: "200"
+            responseParameters:
+              method.response.header.Access-Control-Allow-Methods: "'GET'"
+              method.response.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+              method.response.header.Access-Control-Allow-Origin: "'*'"
 
 components:
   schemas:
@@ -60,6 +93,15 @@ components:
         area_name:
           type: "string"
           description: ""
+    Location:
+      type: "object"
+      properties:
+        location_name:
+          type: "string"
+        google_maps_url:
+          type: "string"
+        area:
+          type: "string"
 
 
   responses:

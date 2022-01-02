@@ -22,6 +22,7 @@ resource "aws_dynamodb_table" "shawn_locations" {
     name = "UUID"
     type = "S"
   }
+
 }
 
 resource "aws_dynamodb_table_item" "init_data" {

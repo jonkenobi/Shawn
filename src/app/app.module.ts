@@ -11,9 +11,10 @@ import { MapComponent } from './map/map.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientJsonpModule } from '@angular/common/http';
+import { AreaExpansionPanelComponent } from './components/area-expansion-panel/area-expansion-panel.component';
 
 @NgModule({
-  declarations: [AppComponent, MapComponent, FeedbackComponent],
+  declarations: [AppComponent, MapComponent, FeedbackComponent, AreaExpansionPanelComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

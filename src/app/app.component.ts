@@ -1,6 +1,6 @@
 import { map } from 'rxjs/operators';
-import { BackendService } from './services/backend-service';
-import { Component, OnInit  } from '@angular/core';
+import { BackendService } from './services/backend.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -82,6 +82,7 @@ export class AppComponent implements OnInit {
   ];
 
   allAreas = [];
+  allLocations = {};
   randomAreaName: string = '';
   suggestions: any = [];
   selected_attr: string = 'random';
@@ -89,27 +90,25 @@ export class AppComponent implements OnInit {
   userPosition: string = '';
 
   ngOnInit() {
-    this.setRandomArea();
+    this.backendService.getAreas().subscribe((areas) => {
+      this.allAreas = areas;
+      this.setRandomArea();
+    });
+    this.backendService.getAllLocations().subscribe((locations) => {
+      this.allLocations = locations;
+    });
   }
 
   updatePostion(position: string) {
     this.userPosition = position;
   }
+
   setRandomArea() {
     this.selected_attr = 'random';
-    this.backendService
-      .getAreas()
-      .subscribe((areas) => {
-        this.allAreas=areas;
-        //temp logic
-         do {
-          var new_random_place = this.getRandom(this.allAreas);
-        } while (
-          this.randomAreaName == new_random_place.area_name
-        );
-        this.randomAreaName = new_random_place.area_name;
-      }
-        );
+    do {
+      var new_random_place = this.getRandom(this.allAreas);
+    } while (this.randomAreaName == new_random_place.area_name);
+    this.randomAreaName = new_random_place.area_name;
   }
 
   choose_place_by_attribute(attr: string) {
@@ -138,7 +137,6 @@ export class AppComponent implements OnInit {
       return '';
     }
   }
-
 
   selectLang(lang: string) {
     this.lang = lang;
