@@ -1,4 +1,4 @@
-import { BackendService } from './../services/backend-service';
+import { BackendService } from './../services/backend.service';
 import { Component, OnInit, Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 

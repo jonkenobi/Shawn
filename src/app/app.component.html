@@ -45,19 +45,12 @@
       <span>Escape</span>
     </div>
   </div>
-  <div class="suggestions">
-    <ng-container *ngIf="selected_attr=='random'">
-      <mat-expansion-panel
-        class="mat-elevation-z0 suggestion"
-      >
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-              {{randomAreaName}}
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-      </mat-expansion-panel>
-    </ng-container>
+
+  <div class="suggestions" *ngIf="selected_attr=='random'">
+    <app-area-expansion-panel [areaName]="randomAreaName"
+     [allLocations]="allLocations"></app-area-expansion-panel>
   </div>
+
   <div class="suggestions">
     <ng-container *ngIf="suggestions&&selected_attr!=='random'">
       <mat-expansion-panel
@@ -72,6 +65,7 @@
       </mat-expansion-panel>
     </ng-container>
   </div>
+
   <div style="top: 100%; padding-bottom: 10px; left: 30%; position: absolute">
     <app-map></app-map>
     <app-feedback></app-feedback>

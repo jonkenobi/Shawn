@@ -1,5 +1,5 @@
 import { map } from 'rxjs/operators';
-import { BackendService } from './services/backend-service';
+import { BackendService } from './services/backend.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -82,7 +82,7 @@ export class AppComponent implements OnInit {
   ];
 
   allAreas = [];
-  allLocations = [];
+  allLocations = {};
   randomAreaName: string = '';
   suggestions: any = [];
   selected_attr: string = 'random';
@@ -96,16 +96,15 @@ export class AppComponent implements OnInit {
     });
     this.backendService.getAllLocations().subscribe((locations) => {
       this.allLocations = locations;
-      console.log(this.allLocations);
     });
   }
 
   updatePostion(position: string) {
     this.userPosition = position;
   }
+
   setRandomArea() {
     this.selected_attr = 'random';
-
     do {
       var new_random_place = this.getRandom(this.allAreas);
     } while (this.randomAreaName == new_random_place.area_name);
