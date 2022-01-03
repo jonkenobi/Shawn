@@ -3,16 +3,16 @@ resource "aws_dynamodb_table" "shawn_areas" {
   billing_mode   = "PROVISIONED"
   read_capacity  = 1
   write_capacity = 1
-  hash_key       = "area_name"
+  hash_key       = "uuid"
 
   attribute {
-    name = "area_name"
+    name = "uuid"
     type = "S"
   }
 }
 
-resource "aws_dynamodb_table" "shawn_locations" {
-  name           = "shawn_locations"
+resource "aws_dynamodb_table" "shawn_places" {
+  name           = "shawn_places"
   billing_mode   = "PROVISIONED"
   read_capacity  = 1
   write_capacity = 1
@@ -23,17 +23,6 @@ resource "aws_dynamodb_table" "shawn_locations" {
     type = "S"
   }
 
-}
-
-resource "aws_dynamodb_table_item" "init_data" {
-  table_name = aws_dynamodb_table.shawn_areas.name
-  hash_key   = aws_dynamodb_table.shawn_areas.hash_key
-
-  item = <<ITEM
-{
-  "area_name": {"S": "新宿"}
-}
-ITEM
 }
 
 //When larger amounts of intial data are required, use this https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_BatchWriteItem.html

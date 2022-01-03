@@ -17,7 +17,7 @@ variable "shawn_get_areas_function_name" {
   default     = "shawn-get-areas"
 }
 
-variable "shawn_get_locations_function_name" {
+variable "shawn_get_places_function_name" {
   type        = string
-  default     = "shawn-get-locations"
+  default     = "shawn-get-places"
 }

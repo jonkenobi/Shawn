@@ -1,8 +1,12 @@
 <mat-expansion-panel class="mat-elevation-z0 suggestion">
-<mat-expansion-panel-header>
-  <mat-panel-title>
-      {{areaName}}
-  </mat-panel-title>
-</mat-expansion-panel-header>
-<div>{{allLocations|json}}</div>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      {{ areaName }}
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <div *ngFor="let place of filterByArea()">
+    <a href="{{ place.google_maps_url }}" target="_blank" rel="noopener noreferrer">{{
+      place.place_name
+    }}</a>
+  </div>
 </mat-expansion-panel>

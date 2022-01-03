@@ -12,7 +12,7 @@ info:
 tags:
   - name: "Areas"
     description: "地域"
-  - name: "Locations"
+  - name: "Places"
     description: "場所"
 
 paths:
@@ -50,10 +50,10 @@ paths:
               method.response.header.Access-Control-Allow-Methods: "'GET'"
               method.response.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
               method.response.header.Access-Control-Allow-Origin: "'*'"
-  /user/locations:
+  /user/places:
     get:
       tags:
-        - "Locations"
+        - "Places"
       summary: "登録された場所一覧を取得"
       responses:
         200:
@@ -63,9 +63,9 @@ paths:
               schema:
                 type: "array"
                 items:
-                  $ref: "#/components/schemas/Location"
+                  $ref: "#/components/schemas/Place"
       x-amazon-apigateway-integration:
-        uri: ${get_locations_function_invoke_arn}
+        uri: ${get_places_function_invoke_arn}
         httpMethod: "POST"
         type: "aws_proxy"
     options:
@@ -93,10 +93,10 @@ components:
         area_name:
           type: "string"
           description: ""
-    Location:
+    Place:
       type: "object"
       properties:
-        location_name:
+        place_name:
           type: "string"
         google_maps_url:
           type: "string"
