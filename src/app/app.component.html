@@ -45,12 +45,13 @@
       <span>Escape</span>
     </div>
   </div>
-
+  <!--Working on the random function first -->
   <div class="suggestions" *ngIf="selected_attr=='random'">
     <app-area-expansion-panel [areaName]="randomAreaName"
-     [allLocations]="allLocations"></app-area-expansion-panel>
+     [allPlaces]="allPlaces"></app-area-expansion-panel>
   </div>
 
+  <!-- old not used for now  -->
   <div class="suggestions">
     <ng-container *ngIf="suggestions&&selected_attr!=='random'">
       <mat-expansion-panel

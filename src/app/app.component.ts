@@ -1,4 +1,4 @@
-import { map } from 'rxjs/operators';
+import { mock_locations } from './saved_places';
 import { BackendService } from './services/backend.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -82,7 +82,7 @@ export class AppComponent implements OnInit {
   ];
 
   allAreas = [];
-  allLocations = {};
+  allPlaces: any = {};
   randomAreaName: string = '';
   suggestions: any = [];
   selected_attr: string = 'random';
@@ -94,8 +94,17 @@ export class AppComponent implements OnInit {
       this.allAreas = areas;
       this.setRandomArea();
     });
-    this.backendService.getAllLocations().subscribe((locations) => {
-      this.allLocations = locations;
+    this.backendService.getAllPlaces().subscribe((places) => {
+      this.allPlaces = places;
+      //use mock locations now
+      this.allPlaces = mock_locations.all_locations.features.map(
+        (location: any) =>
+          ({
+            place_name: location['properties']['Title'],
+            google_maps_url: location['properties']['Google Maps URL'],
+            area: location['properties']['area'],
+          })
+      );
     });
   }
 

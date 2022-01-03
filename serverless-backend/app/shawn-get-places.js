@@ -18,8 +18,8 @@ exports.handler = async (event) => {
 
 function getAll() {
     const params = {
-        TableName: 'shawn_locations',
-        ProjectionExpression: "location_name, google_maps_url, area"
+        TableName: 'shawn_places',
+        ProjectionExpression: "place_name, google_maps_url, area"
     };
     return dynamodb.scan(params, (err, data) => {
         if (err) {
