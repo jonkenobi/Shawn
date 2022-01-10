@@ -93,6 +93,10 @@ components:
         area_name:
           type: "string"
           description: ""
+        longitude:
+          type: "string"
+        latitude:
+          type: "string"
     Place:
       type: "object"
       properties:
@@ -100,9 +104,10 @@ components:
           type: "string"
         google_maps_url:
           type: "string"
-        area:
+        longitude:
           type: "string"
-
+        latitude:
+          type: "string"
 
   responses:
     cors:

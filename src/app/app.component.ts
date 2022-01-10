@@ -1,4 +1,5 @@
-import { mock_locations } from './saved_places';
+import { Place } from './models/place';
+import { Area } from './models/area';
 import { BackendService } from './services/backend.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -81,8 +82,11 @@ export class AppComponent implements OnInit {
     },
   ];
 
-  allAreas = [];
-  allPlaces: any = {};
+  //todo rename ; basically "places",
+  placesForRandom: Place[]  = [];
+
+  allAreas: Area[] = [];
+  allPlaces: Place[] = [];
   randomAreaName: string = '';
   suggestions: any = [];
   selected_attr: string = 'random';
@@ -96,15 +100,6 @@ export class AppComponent implements OnInit {
     });
     this.backendService.getAllPlaces().subscribe((places) => {
       this.allPlaces = places;
-      //use mock locations now
-      this.allPlaces = mock_locations.all_locations.features.map(
-        (location: any) =>
-          ({
-            place_name: location['properties']['Title'],
-            google_maps_url: location['properties']['Google Maps URL'],
-            area: location['properties']['area'],
-          })
-      );
     });
   }
 
@@ -115,9 +110,22 @@ export class AppComponent implements OnInit {
   setRandomArea() {
     this.selected_attr = 'random';
     do {
-      var new_random_place = this.getRandom(this.allAreas);
-    } while (this.randomAreaName == new_random_place.area_name);
-    this.randomAreaName = new_random_place.area_name;
+      var new_random_area = this.getRandomArea(this.allAreas);
+    } while (this.randomAreaName == new_random_area.area_name);
+    this.randomAreaName = new_random_area.area_name;
+    this.filterPlacesByArea(new_random_area);
+  }
+
+  getRandomArea(list: any) {
+    const random_place = list[Math.floor(Math.random() * list.length)];
+    return random_place;
+  }
+
+  filterPlacesByArea(area: Area){
+    this.placesForRandom= this.allPlaces.filter(
+      place=> Math.abs(area.longitude - place.longitude) < 0.01
+        && Math.abs(area.latitude - place.latitude) < 0.01
+    )
   }
 
   choose_place_by_attribute(attr: string) {
@@ -128,10 +136,7 @@ export class AppComponent implements OnInit {
       .slice(0, 5);
   }
 
-  getRandom(list: any) {
-    const random_place = list[Math.floor(Math.random() * list.length)];
-    return random_place;
-  }
+
 
   getSuggestionClass(suggestion: any): string {
     if (suggestion[this.selected_attr] == 5) {

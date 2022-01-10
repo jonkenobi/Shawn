@@ -1,3 +1,4 @@
+import { Place } from './../models/place';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
@@ -12,7 +13,7 @@ export class BackendService {
     return this.http.get(this.baseUrl + '/user/areas');
   }
 
-  getAllPlaces() {
+  getAllPlaces(): Observable<any> {
     return this.http.get(this.baseUrl + '/user/places');
   }
 }

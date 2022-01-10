@@ -8,15 +8,9 @@ import { Place } from '../../models/place';
 })
 export class AreaExpansionPanelComponent implements OnInit {
   @Input() areaName: string = '';
-  @Input() allPlaces: Place[] = [];
+  @Input() places: Place[] = [];
 
   constructor() {}
 
   ngOnInit(): void {}
-
-  filterByArea(): Place[] {
-    return this.allPlaces.filter(
-      (location: any) => location.area == this.areaName
-    );
-  }
 }

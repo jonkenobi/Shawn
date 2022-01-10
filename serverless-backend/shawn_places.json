@@ -1,0 +1,202 @@
+{
+  "shawn_places": [
+      {
+          "PutRequest": {
+              "Item": {
+                  "place_name": {
+                      "S": "Fili"
+                  },
+                  "google_maps_url": {
+                      "S": "http://maps.google.com/?cid=16325139695315152822"
+                  },
+                  "latitude": {
+                      "S": "35.6996298"
+                  },
+                  "longitude": {
+                      "S": "139.7849047"
+                  }
+              }
+          }
+      },
+      {
+          "PutRequest": {
+              "Item": {
+                  "place_name": {
+                      "S": "Sanshō Kōfuku (Sānshāngqiǎofú) Akasaka"
+                  },
+                  "google_maps_url": {
+                      "S": "http://maps.google.com/?cid=8950467726064582308"
+                  },
+                  "latitude": {
+                      "S": "35.6732074"
+                  },
+                  "longitude": {
+                      "S": "139.7381256"
+                  }
+              }
+          }
+      },
+      {
+          "PutRequest": {
+              "Item": {
+                  "place_name": {
+                      "S": "徳寿 本店"
+                  },
+                  "google_maps_url": {
+                      "S": "http://maps.google.com/?cid=3549160543308174880"
+                  },
+                  "latitude": {
+                      "S": "35.6588847"
+                  },
+                  "longitude": {
+                      "S": "139.7778334"
+                  }
+              }
+          }
+      },
+      {
+          "PutRequest": {
+              "Item": {
+                  "place_name": {
+                      "S": "BLU JAM CAFE Azabu-Juban"
+                  },
+                  "google_maps_url": {
+                      "S": "http://maps.google.com/?cid=6603485424113293728"
+                  },
+                  "latitude": {
+                      "S": "35.6556337"
+                  },
+                  "longitude": {
+                      "S": "139.7366217"
+                  }
+              }
+          }
+      },
+      {
+          "PutRequest": {
+              "Item": {
+                  "place_name": {
+                      "S": "440 Broadway Taco Shop"
+                  },
+                  "google_maps_url": {
+                      "S": "http://maps.google.com/?cid=17865408903955430013"
+                  },
+                  "latitude": {
+                      "S": "35.6470788"
+                  },
+                  "longitude": {
+                      "S": "139.7162327"
+                  }
+              }
+          }
+      },
+      {
+          "PutRequest": {
+              "Item": {
+                  "place_name": {
+                      "S": "ØL by Oslo Brewing Co."
+                  },
+                  "google_maps_url": {
+                      "S": "http://maps.google.com/?cid=2969291730392274255"
+                  },
+                  "latitude": {
+                      "S": "35.6622045"
+                  },
+                  "longitude": {
+                      "S": "139.6957136"
+                  }
+              }
+          }
+      },
+      {
+          "PutRequest": {
+              "Item": {
+                  "place_name": {
+                      "S": "ALDEBARAN"
+                  },
+                  "google_maps_url": {
+                      "S": "http://maps.google.com/?cid=7286219719880127088"
+                  },
+                  "latitude": {
+                      "S": "35.6601562"
+                  },
+                  "longitude": {
+                      "S": "139.7277656"
+                  }
+              }
+          }
+      },
+      {
+          "PutRequest": {
+              "Item": {
+                  "place_name": {
+                      "S": "PIZZA SLICE"
+                  },
+                  "google_maps_url": {
+                      "S": "http://maps.google.com/?cid=7454850601230559425"
+                  },
+                  "latitude": {
+                      "S": "35.6536724"
+                  },
+                  "longitude": {
+                      "S": "139.7051216"
+                  }
+              }
+          }
+      },
+      {
+          "PutRequest": {
+              "Item": {
+                  "place_name": {
+                      "S": "Chiles Mexican Grill Harajuku"
+                  },
+                  "google_maps_url": {
+                      "S": "http://maps.google.com/?cid=15327160940307234850"
+                  },
+                  "latitude": {
+                      "S": "35.6703765"
+                  },
+                  "longitude": {
+                      "S": "139.7055990"
+                  }
+              }
+          }
+      },
+      {
+          "PutRequest": {
+              "Item": {
+                  "place_name": {
+                      "S": "Good Town Doughnuts and Coffee"
+                  },
+                  "google_maps_url": {
+                      "S": "http://maps.google.com/?cid=11823685539488960543"
+                  },
+                  "latitude": {
+                      "S": "35.6664156"
+                  },
+                  "longitude": {
+                      "S": "139.7050526"
+                  }
+              }
+          }
+      },
+      {
+          "PutRequest": {
+              "Item": {
+                  "place_name": {
+                      "S": "Malay Asian Cuisine Shibuya Shop"
+                  },
+                  "google_maps_url": {
+                      "S": "http://maps.google.com/?cid=14121839727480384781"
+                  },
+                  "latitude": {
+                      "S": "35.6606949"
+                  },
+                  "longitude": {
+                      "S": "139.7072295"
+                  }
+              }
+          }
+      }
+  ]
+}
