@@ -42,13 +42,13 @@
       <mat-icon aria-hidden="false" aria-label="man running icon"
         >directions_run</mat-icon
       >
-      <span>Escape</span>
+      <span>Detox</span>
     </div>
   </div>
   <!--Working on the random function first -->
   <div class="suggestions" *ngIf="selected_attr=='random'">
     <app-area-expansion-panel [areaName]="randomAreaName"
-     [allPlaces]="allPlaces"></app-area-expansion-panel>
+     [places]="placesForRandom"></app-area-expansion-panel>
   </div>
 
   <!-- old not used for now  -->

@@ -16,10 +16,10 @@ resource "aws_dynamodb_table" "shawn_places" {
   billing_mode   = "PROVISIONED"
   read_capacity  = 1
   write_capacity = 1
-  hash_key       = "UUID"
+  hash_key       = "place_name"
 
   attribute {
-    name = "UUID"
+    name = "place_name"
     type = "S"
   }
 

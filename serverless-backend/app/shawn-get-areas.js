@@ -19,7 +19,7 @@ exports.handler = async (event) => {
 function getAreas() {
     const params = {
         TableName: 'shawn_areas',
-        ProjectionExpression: "area_name"
+        ProjectionExpression: "area_name, longitude, latitude"
     };
     return dynamodb.scan(params, (err, data) => {
         if (err) {

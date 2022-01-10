@@ -4,7 +4,7 @@
       {{ areaName }}
     </mat-panel-title>
   </mat-expansion-panel-header>
-  <div *ngFor="let place of filterByArea()">
+  <div *ngFor="let place of places">
     <a href="{{ place.google_maps_url }}" target="_blank" rel="noopener noreferrer">{{
       place.place_name
     }}</a>
