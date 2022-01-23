@@ -97,6 +97,14 @@ components:
           type: "string"
         latitude:
           type: "string"
+        coffee:
+          type: "string"
+        nature:
+          type: "string"
+        drinks:
+          type: "string"
+        shopping:
+          type: "string"
     Place:
       type: "object"
       properties:

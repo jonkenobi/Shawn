@@ -66,14 +66,18 @@ svg.material-icons {
   transition: all 0.2s ease-in-out;
   line-height: 24px;
 }
-a,.card-container .card:not(.highlight-card) {
+a,
+.card-container .card:not(.highlight-card),
+.card-for-random {
   cursor: pointer;
 }
 
-.active-lang{
+.active-lang {
   color: #1976d2;
 }
-.card-container .card:not(.highlight-card):hover {
+
+.card:not(.highlight-card):hover
+{
   transform: translateY(-3px);
   box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
 }
@@ -85,23 +89,15 @@ a,.card-container .card:not(.highlight-card) {
 .card.highlight-card {
   background-color: #1976d2;
   color: white;
-  font-weight: 600;
+  font-weight: 500;
   border: none;
-  width: auto;
-  min-width: 30%;
   position: relative;
 }
 
-.card.card.highlight-card span {
-  margin-left: 60px;
-}
-
-
 a:visited,
 a:hover,
-.card:first-child,
 .card:visited,
-.card:hover {
+.card:not(.highlight-card):hover {
   color: #1976d2;
   text-decoration: none;
 }
@@ -113,23 +109,8 @@ a:hover,
   font-size: 1.5rem;
 }
 
-.suggestion{
+.suggestion {
   margin: 2px auto;
-}
-
-.first-pick-suggestion {
-  font-weight: bold;
-  background-color: #ccff02;
-}
-
-.second-pick-suggestion {
-  font-weight: bold;
-  background-color: #e1ffb29c;
-  border-color:white
-}
-
-.third-pick-suggestion{
-  background-color: whitesmoke;
 }
 
 footer {
