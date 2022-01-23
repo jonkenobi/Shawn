@@ -1,3 +1,18 @@
-.suggestion{
-    margin: 2px auto;
-  }
+.suggestion {
+  margin: 2px auto;
+}
+
+.first-pick-suggestion {
+  font-weight: bold;
+  background-color: #47a6ded0;
+}
+
+.second-pick-suggestion {
+  font-weight: bold;
+  background-color: #47a6de57;
+  border-color: white;
+}
+
+.third-pick-suggestion {
+  background-color: whitesmoke;
+}

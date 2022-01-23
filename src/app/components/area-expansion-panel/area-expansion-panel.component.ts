@@ -9,6 +9,7 @@ import { Place } from '../../models/place';
 export class AreaExpansionPanelComponent implements OnInit {
   @Input() areaName: string = '';
   @Input() places: Place[] = [];
+  @Input() suggestionClass: string = '';
 
   constructor() {}
 

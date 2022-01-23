@@ -27,12 +27,12 @@
       <span>Nature</span>
     </div>
 
-    <div class="card" (click)="choose_place_by_attribute('alcohol')">
+    <div class="card" (click)="choose_place_by_attribute('drinks')">
       <mat-icon aria-hidden="false" aria-label="Drink icon">local_bar</mat-icon>
 
       <span>Drinks</span>
     </div>
-    <div class="card" (click)="choose_place_by_attribute('young_fancy')">
+    <div class="card" (click)="choose_place_by_attribute('shopping')">
       <mat-icon aria-hidden="false" aria-label="shopping bag icon"
         >shopping_bag</mat-icon
       >
@@ -46,25 +46,19 @@
     </div>
   </div>
   <!--Working on the random function first -->
-  <div class="suggestions" *ngIf="selected_attr=='random'">
-    <app-area-expansion-panel [areaName]="randomAreaName"
-     [places]="placesForRandom"></app-area-expansion-panel>
+  <div class="suggestions" *ngIf="selected_attr == 'random'">
+    <app-area-expansion-panel
+      [areaName]="randomArea.area_name"
+      [places]="filterPlacesByArea(randomArea)"
+    ></app-area-expansion-panel>
   </div>
 
-  <!-- old not used for now  -->
-  <div class="suggestions">
-    <ng-container *ngIf="suggestions&&selected_attr!=='random'">
-      <mat-expansion-panel
-        *ngFor="let suggestion of suggestions"
-        class="mat-elevation-z0 suggestion"
-      >
-        <mat-expansion-panel-header [ngClass]="getSuggestionClass(suggestion)">
-          <mat-panel-title>
-            {{ suggestionName(suggestion) }}
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-      </mat-expansion-panel>
-    </ng-container>
+  <div class="suggestions" *ngIf="suggestions && selected_attr !== 'random'">
+      <app-area-expansion-panel *ngFor="let suggestion of suggestions"
+      [suggestionClass]="getSuggestionClass(suggestion)"
+      [areaName]="suggestionName(suggestion)"
+      [places]="filterPlacesByArea(suggestion)"
+    ></app-area-expansion-panel>
   </div>
 
   <div style="top: 100%; padding-bottom: 10px; left: 30%; position: absolute">

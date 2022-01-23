@@ -117,21 +117,6 @@ a:hover,
   margin: 2px auto;
 }
 
-.first-pick-suggestion {
-  font-weight: bold;
-  background-color: #ccff02;
-}
-
-.second-pick-suggestion {
-  font-weight: bold;
-  background-color: #e1ffb29c;
-  border-color:white
-}
-
-.third-pick-suggestion{
-  background-color: whitesmoke;
-}
-
 footer {
   margin-top: 8px;
   display: flex;
