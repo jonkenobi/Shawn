@@ -4,6 +4,7 @@
       {{ getTitle() }}
     </h2>
   </header>
+
   <div style="text-align: right; margin-right: 15px; font-size: small">
     <a [ngClass]="{ 'active-lang': lang == 'JP' }" (click)="selectLang('JP')"
       >JP</a
@@ -11,41 +12,65 @@
       >EN</a
     >
   </div>
+
   <div class="card-container">
-    <div class="card" (click)="setRandomArea()">
+    <div
+      class="card card-for-random"
+      (click)="setRandomArea()"
+      [class.highlight-card]="selected_attr == 'random'"
+    >
       <mat-icon>auto_awesome</mat-icon>
       <span>Random</span>
     </div>
 
-    <div class="card" (click)="choose_place_by_attribute('coffee')">
+    <div
+      class="card"
+      (click)="choose_place_by_attribute('coffee')"
+      [class.highlight-card]="selected_attr == 'coffee'"
+    >
       <mat-icon aria-hidden="false" aria-label="Coffee icon">coffee</mat-icon>
       <span>Coffee</span>
     </div>
 
-    <div class="card" (click)="choose_place_by_attribute('nature')">
+    <div
+      class="card"
+      (click)="choose_place_by_attribute('nature')"
+      [class.highlight-card]="selected_attr == 'nature'"
+    >
       <mat-icon aria-hidden="false" aria-label="Tree icon">park</mat-icon>
       <span>Nature</span>
     </div>
 
-    <div class="card" (click)="choose_place_by_attribute('drinks')">
+    <div
+      class="card"
+      (click)="choose_place_by_attribute('drinks')"
+      [class.highlight-card]="selected_attr == 'drinks'"
+    >
       <mat-icon aria-hidden="false" aria-label="Drink icon">local_bar</mat-icon>
-
       <span>Drinks</span>
     </div>
-    <div class="card" (click)="choose_place_by_attribute('shopping')">
-      <mat-icon aria-hidden="false" aria-label="shopping bag icon"
-        >shopping_bag</mat-icon
-      >
+    <div
+      class="card"
+      [class.highlight-card]="selected_attr == 'shopping'"
+      (click)="choose_place_by_attribute('shopping')"
+    >
+      <mat-icon aria-hidden="false" aria-label="shopping bag icon">
+        shopping_bag
+      </mat-icon>
       <span>Shopping</span>
     </div>
-    <div class="card" (click)="choose_place_by_attribute('detox')">
+    <div
+      class="card"
+      [class.highlight-card]="selected_attr == 'detox'"
+      (click)="choose_place_by_attribute('detox')"
+    >
       <mat-icon aria-hidden="false" aria-label="man running icon"
         >directions_run</mat-icon
       >
       <span>Detox</span>
     </div>
   </div>
-  <!--Working on the random function first -->
+
   <div class="suggestions" *ngIf="selected_attr == 'random'">
     <app-area-expansion-panel
       [areaName]="randomArea.area_name"
@@ -54,7 +79,8 @@
   </div>
 
   <div class="suggestions" *ngIf="suggestions && selected_attr !== 'random'">
-      <app-area-expansion-panel *ngFor="let suggestion of suggestions"
+    <app-area-expansion-panel
+      *ngFor="let suggestion of suggestions"
       [suggestionClass]="getSuggestionClass(suggestion)"
       [areaName]="suggestionName(suggestion)"
       [places]="filterPlacesByArea(suggestion)"
