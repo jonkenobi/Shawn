@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
 
   allAreas: [{ [key: string]: any }] = [{}];
   allPlaces: Place[] = [];
-  randomArea: any = {}; //actually Area type
+  randomAreas: any[] = [];
   suggestions: any = [];
   selected_attr: string = 'random';
   lang = 'JP';
@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.backendService.getAreas().subscribe((areas) => {
       this.allAreas = areas;
-      this.setRandomArea();
+      this.setRandomAreas();
     });
     this.backendService.getAllPlaces().subscribe((places) => {
       this.allPlaces = places;
@@ -36,12 +36,19 @@ export class AppComponent implements OnInit {
     this.userPosition = position;
   }
 
-  setRandomArea() {
+  setRandomAreas() {
     this.selected_attr = 'random';
-    do {
-      var new_random_area = this.getRandomArea(this.allAreas);
-    } while (this.randomArea == new_random_area.area_name);
-    this.randomArea = new_random_area;
+    const areas = this.allAreas.filter(
+      (area) => !this.randomAreas.includes(area)
+    );
+
+    var set = new Set();
+
+    while (set.size < 5) {
+      var new_random_area = this.getRandomArea(areas);
+      set.add(new_random_area);
+    }
+    this.suggestions = Array.from(set);
   }
 
   getRandomArea(list: any) {
@@ -49,7 +56,7 @@ export class AppComponent implements OnInit {
     return random_place;
   }
 
-  filterPlacesByArea(area: Area): Place[]  {
+  filterPlacesByArea(area: Area): Place[] {
     return this.allPlaces.filter(
       (place) =>
         Math.abs(area.longitude - place.longitude) < 0.01 &&
@@ -75,7 +82,7 @@ export class AppComponent implements OnInit {
     if (suggestion[this.selected_attr]) {
       return 'third-pick-suggestion';
     } else {
-      return '';
+      return 'plain-suggestion';
     }
   }
 

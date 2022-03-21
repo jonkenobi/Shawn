@@ -16,7 +16,7 @@
   <div class="card-container">
     <div
       class="card card-for-random"
-      (click)="setRandomArea()"
+      (click)="setRandomAreas()"
       [class.highlight-card]="selected_attr == 'random'"
     >
       <mat-icon>auto_awesome</mat-icon>
@@ -71,14 +71,7 @@
     </div>
   </div>
 
-  <div class="suggestions" *ngIf="selected_attr == 'random'">
-    <app-area-expansion-panel
-      [areaName]="randomArea.area_name"
-      [places]="filterPlacesByArea(randomArea)"
-    ></app-area-expansion-panel>
-  </div>
-
-  <div class="suggestions" *ngIf="suggestions && selected_attr !== 'random'">
+  <div class="suggestions">
     <app-area-expansion-panel
       *ngFor="let suggestion of suggestions"
       [suggestionClass]="getSuggestionClass(suggestion)"
