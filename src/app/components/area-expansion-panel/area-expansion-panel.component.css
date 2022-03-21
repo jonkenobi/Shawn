@@ -16,3 +16,9 @@
 .third-pick-suggestion {
   background-color: whitesmoke;
 }
+
+.plain-suggestion {
+  font-weight: bold;
+  background-color: #47a6de57;
+  border-color: white;
+}
