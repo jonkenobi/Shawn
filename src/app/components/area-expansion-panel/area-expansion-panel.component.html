@@ -1,7 +1,9 @@
 <mat-expansion-panel class="mat-elevation-z0 suggestion" >
   <mat-expansion-panel-header [ngClass]="suggestionClass">
     <mat-panel-title>
-      {{ areaName }}
+      <a [href]="areaUrl"
+       class="nostyle"
+       [target]="areaUrl!='#'?'_blank':'_self'">{{ areaName }}</a>
     </mat-panel-title>
   </mat-expansion-panel-header>
   <div *ngFor="let place of places" >

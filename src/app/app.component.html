@@ -75,13 +75,14 @@
     <app-area-expansion-panel
       *ngFor="let suggestion of suggestions"
       [suggestionClass]="getSuggestionClass(suggestion)"
+      [areaUrl]="getUrl(suggestion)"
       [areaName]="suggestionName(suggestion)"
       [places]="filterPlacesByArea(suggestion)"
     ></app-area-expansion-panel>
   </div>
 
   <div style="top: 100%; padding-bottom: 10px; left: 30%; position: absolute">
-    <app-map></app-map>
+    <app-map (positionReceived)="updatePostion($event)"></app-map>
     <app-feedback></app-feedback>
   </div>
 </div>
