@@ -25,7 +25,7 @@ export class MapComponent implements OnInit {
   getUserCurrentLocation() {
     navigator.geolocation.getCurrentPosition((position) => {
       this.position =
-       position.coords.latitude + ', '+position.coords.longitude
+       position.coords.latitude + ','+position.coords.longitude
       this.positionReceived.emit(this.position);
     });
   }

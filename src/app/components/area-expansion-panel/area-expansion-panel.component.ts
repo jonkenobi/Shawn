@@ -10,6 +10,7 @@ export class AreaExpansionPanelComponent implements OnInit {
   @Input() areaName: string = '';
   @Input() places: Place[] = [];
   @Input() suggestionClass: string = '';
+  @Input() areaUrl: string = '#';
 
   constructor() {}
 

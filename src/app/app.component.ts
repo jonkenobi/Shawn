@@ -44,7 +44,7 @@ export class AppComponent implements OnInit {
 
     var set = new Set();
 
-    while (set.size < 5) {
+    while (set.size < 3) {
       var new_random_area = this.getRandomArea(areas);
       set.add(new_random_area);
     }
@@ -62,6 +62,15 @@ export class AppComponent implements OnInit {
         Math.abs(area.longitude - place.longitude) < 0.01 &&
         Math.abs(area.latitude - place.latitude) < 0.01
     );
+  }
+
+  getUrl(suggestion: any):string{
+    if(!suggestion.latitude){
+      return "#";
+    }
+    const url = "https://www.google.com/maps/dir/".concat(this.userPosition,"/",
+    suggestion.latitude,",",suggestion.longitude,"/data=!3m1!4b1!4m2!4m1!3e3")
+    return url;
   }
 
   choose_place_by_attribute(attr: string) {
