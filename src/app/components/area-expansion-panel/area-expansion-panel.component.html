@@ -1,4 +1,7 @@
-<mat-expansion-panel class="mat-elevation-z0 suggestion" >
+<mat-expansion-panel
+  class="mat-elevation-z0 suggestion"
+  [expanded]="panelOpenState"
+>
   <mat-expansion-panel-header [ngClass]="suggestionClass">
     <mat-panel-title>
       <a [href]="areaUrl"

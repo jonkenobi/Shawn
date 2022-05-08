@@ -116,6 +116,22 @@ components:
           type: "string"
         latitude:
           type: "string"
+        asian:
+          type: "boolean"
+        mexican:
+          type: "boolean"
+        middle_east:
+          type: "boolean"
+        western:
+          type: "boolean"
+        drinks:
+          type: "boolean"
+        italian:
+          type: "boolean"
+        chinese:
+          type: "boolean"
+        japanese:
+          type: "boolean"
 
   responses:
     cors:

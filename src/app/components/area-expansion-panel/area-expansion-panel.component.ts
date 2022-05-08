@@ -11,6 +11,7 @@ export class AreaExpansionPanelComponent implements OnInit {
   @Input() places: Place[] = [];
   @Input() suggestionClass: string = '';
   @Input() areaUrl: string = '#';
+  @Input() panelOpenState: boolean = false;
 
   constructor() {}
 

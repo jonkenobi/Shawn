@@ -75,10 +75,9 @@ export class AppComponent implements OnInit {
 
   choose_place_by_attribute(attr: string) {
     this.selected_attr = attr;
-    this.suggestions = this.allAreas
-      .filter((area: any) => area[attr] && area[attr] >= 1)
-      .sort((a, b) => b[attr] - a[attr])
-      .slice(0, 5);
+    this.suggestions = this.allPlaces.filter(
+      place=>place[attr]
+    )
   }
 
   getSuggestionClass(suggestion: any): string {
