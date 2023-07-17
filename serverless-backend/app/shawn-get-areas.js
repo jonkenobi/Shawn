@@ -1,10 +1,17 @@
-//setup dynamo-db stuff
-const AWS = require("aws-sdk");
-AWS.config.update({region: "ap-northeast-1"});
-const dynamodb = new AWS.DynamoDB.DocumentClient;
+// Updated version for node18
+import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
+import { DynamoDBDocumentClient, ScanCommand } from "@aws-sdk/lib-dynamodb";
 
-exports.handler = async (event) => {
-    let data = await getAreas();
+const client = new DynamoDBClient({region: "ap-northeast-1"});
+const docClient = DynamoDBDocumentClient.from(client);
+
+export const handler = async (event) => {
+     const command = new ScanCommand ({
+        TableName: 'shawn_areas',
+        ProjectionExpression: "area_name, longitude, latitude, drinks, coffee, nature, shopping"
+    });
+
+    let data = await docClient.send(command);
     const response = {
         statusCode: 200,
         headers: {
@@ -13,18 +20,8 @@ exports.handler = async (event) => {
         body: JSON.stringify(data.Items),
         isBase64Encoded: false
     };
+
     return response;
 };
 
-function getAreas() {
-    const params = {
-        TableName: 'shawn_areas',
-        ProjectionExpression: "area_name, longitude, latitude, drinks, coffee, nature, shopping"
-    };
-    return dynamodb.scan(params, (err, data) => {
-        if (err) {
-            console.log(err); // an error occurred
-        }
-    }).promise();
-}
 
