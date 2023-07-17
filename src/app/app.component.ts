@@ -120,6 +120,16 @@ export class AppComponent implements OnInit {
             )
         );
         break;
+      case 4:
+          areas = areas.filter(
+            (area: any) =>
+              !this.isCloseEnough(
+                this.UNDER_60_MINS,
+                area.latitude,
+                area.longitude
+              )
+          );
+          break;
       default:
         break;
     }
