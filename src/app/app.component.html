@@ -106,14 +106,6 @@
       <span>Japanese</span>
     </div>
 
-    <div
-      class="card"
-      (click)="choosePlaceByAttribute('drinks')"
-      [class.highlight-card]="selected_attr == 'drinks'"
-    >
-      <mat-icon aria-hidden="false" aria-label="Drink icon">local_bar</mat-icon>
-      <span>Drinks</span>
-    </div>
   </div>
 
   <div class="suggestions" *ngIf="selected_attr == 'random'">
