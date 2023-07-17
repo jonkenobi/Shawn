@@ -27,6 +27,7 @@ export class SearchInputAreaComponent implements OnInit {
     { name: 'Closeby (~20 mins)', value: 1 },
     { name: '20 ~ 40 mins', value: 2 },
     { name: 'Up to 1 hr', value: 3 },
+    { name: 'Somewhere far', value: 4 },
   ];
   // timeDurations = [
   //   { name: '~3hrs', value: 1 },
