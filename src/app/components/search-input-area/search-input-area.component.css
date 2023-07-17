@@ -1,0 +1,29 @@
+.search-inputs-container {
+  font-size: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  margin: 5px;
+}
+
+.search-btn{
+  background-color: #1976d2; color: white; margin: 10px
+}
+
+.input{
+  padding: 5px 10px;
+}
+
+.input-mat-checkbox{
+  align-items: center;
+  display: flex;
+}
+
+.mat-checkbox-label {
+  display: flex;
+  align-items: center;
+}
+
+.mat-checkbox-label > span {
+  margin-left: 8px;
+}

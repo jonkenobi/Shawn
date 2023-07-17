@@ -17,15 +17,18 @@ export class AppComponent implements OnInit {
   allPlaces: Place[] = [];
   randomAreas: any[] = [];
   suggestions: any = [];
-  selected_attr: string = 'random';
+  selected_attr: string = 'search';
   lang = 'JP';
   userPosition: string = '';
   places: Place[] = [];
+  UNDER_20_MINS = 0.02;
+  UNDER_40_MINS = 0.03;
+  UNDER_60_MINS = 0.05;
 
   ngOnInit() {
     this.backendService.getAreas().subscribe((areas) => {
       this.allAreas = areas;
-      this.setRandomAreas();
+      // this.setRandomAreas(); uncomment when random is the default tab
     });
     this.backendService.getAllPlaces().subscribe((places) => {
       this.allPlaces = places;
@@ -64,20 +67,83 @@ export class AppComponent implements OnInit {
     );
   }
 
-  getUrl(suggestion: any):string{
-    if(!suggestion.latitude){
-      return "#";
+  getUrl(suggestion: any): string {
+    if (!suggestion.latitude) {
+      return '#';
     }
-    const url = "https://www.google.com/maps/dir/".concat(this.userPosition,"/",
-    suggestion.latitude,",",suggestion.longitude,"/data=!3m1!4b1!4m2!4m1!3e3")
+    const url = 'https://www.google.com/maps/dir/'.concat(
+      this.userPosition,
+      '/',
+      suggestion.latitude,
+      ',',
+      suggestion.longitude,
+      '/data=!3m1!4b1!4m2!4m1!3e3'
+    );
     return url;
   }
 
-  choose_place_by_attribute(attr: string) {
+  setSearchedAreas(searchParams: any) {
+    let areas: any = this.allAreas;
+    switch (searchParams.tripDuration) {
+      case 1:
+        areas = areas.filter((area: any) =>
+          this.isCloseEnough(this.UNDER_20_MINS, area.latitude, area.longitude)
+        );
+        break;
+      case 2:
+        areas = areas.filter(
+          (area: any) =>
+            !this.isCloseEnough(
+              this.UNDER_20_MINS,
+              area.latitude,
+              area.longitude
+            ) &&
+            this.isCloseEnough(
+              this.UNDER_40_MINS,
+              area.latitude,
+              area.longitude
+            )
+        );
+        break;
+      case 3:
+        areas = areas.filter(
+          (area: any) =>
+            !this.isCloseEnough(
+              this.UNDER_40_MINS,
+              area.latitude,
+              area.longitude
+            ) &&
+            this.isCloseEnough(
+              this.UNDER_60_MINS,
+              area.latitude,
+              area.longitude
+            )
+        );
+        break;
+      default:
+        break;
+    }
+
+    for (const attribute of searchParams.attributes) {
+      areas = areas.filter((area: any) => area[attribute] >= 3);
+    }
+
+    this.suggestions = areas;
+  }
+
+  private isCloseEnough(distance: number, lat: number, long: number): boolean {
+    const coords = this.userPosition.split(',');
+    let userLat = Number(coords[0]);
+    let userLong = Number(coords[1]);
+
+    const diff = Math.abs(lat - userLat) + Math.abs(long - userLong);
+
+    return diff < distance * 2;
+  }
+
+  choosePlaceByAttribute(attr: string) {
     this.selected_attr = attr;
-    this.suggestions = this.allPlaces.filter(
-      place=>place[attr]
-    )
+    this.suggestions = this.allPlaces.filter((place) => place[attr]);
   }
 
   getSuggestionClass(suggestion: any): string {

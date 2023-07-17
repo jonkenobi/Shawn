@@ -1,0 +1,38 @@
+<div class="search-inputs-container">
+  <div class="input" style="width: 140px">
+    <mat-label>Trip duration</mat-label>
+    <mat-select [(value)]="tripDuration">
+      <mat-option *ngFor="let option of tripDurations" [value]="option.value">
+        {{ option.name }}
+      </mat-option>
+    </mat-select>
+  </div>
+  <!--
+    todo
+    <mat-form-field>
+    <mat-label>Time duration</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let option of timeDurations" [value]="option.value">
+        {{ option.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+-->
+
+  <div *ngFor="let attribute of attributesOptions" class="input input-mat-checkbox">
+    <mat-checkbox
+      (change)="onCheckboxChange($event, attribute.name)"
+    >
+      <span class="mat-checkbox-label">
+        <mat-icon>{{ attribute.icon }}</mat-icon>
+        <span> {{ capitalizeFirstLetter(attribute.name) }}</span>
+      </span>
+    </mat-checkbox>
+  </div>
+
+  <div>
+    <button mat-raised-button class="search-btn" (click)="onSubmit()">
+      Search
+    </button>
+  </div>
+</div>

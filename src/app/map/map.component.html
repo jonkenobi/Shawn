@@ -1,7 +1,8 @@
-<p *ngIf="!isLocationAccessPermissionDenied">
+<div *ngIf="!isLocationAccessPermissionDenied">
   Map works!
-  {{ position }}
-</p>
+  Your position: <a [href]="getPositionUrl()" target="_blank">{{position}}</a>
+</div>
+<a href="https://goo.gl/maps/nQG3JsgczweojfTDA" target="_blank">My favs</a>
 
 <p *ngIf="isLocationAccessPermissionDenied">
   Allow us location access for better recommendations! :)
