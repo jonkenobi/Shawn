@@ -32,4 +32,8 @@ export class MapComponent implements OnInit {
   report(state: any) {
     console.log('Permission ' + state);
   }
+
+  getPositionUrl(): string{
+    return "https://www.google.com/maps/@"+ this.position;
+  }
 }
