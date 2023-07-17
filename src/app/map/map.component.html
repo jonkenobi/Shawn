@@ -1,9 +1,17 @@
-<div *ngIf="!isLocationAccessPermissionDenied">
-  Map works!
-  Your position: <a [href]="getPositionUrl()" target="_blank">{{position}}</a>
-</div>
-<a href="https://goo.gl/maps/nQG3JsgczweojfTDA" target="_blank">My favs</a>
+<!-- https://blog.hubspot.com/website/how-to-embed-google-map-in-html -->
+<div class="google-map">
+  <!-- <iframe nonce="R4nd0m" [src]="sanitizer.bypassSecurityTrustResourceUrl('https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12960.639561579219!2d139.68092895!3d35.6976828!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018f3babedb7b4f%3A0xc07794aa393f8f90!2zQ0FGw4kgT0FTSVMg5Lit6YeO5Z2C5LiK5bqX!5e0!3m2!1sen!2sjp!4v1676735650048!5m2!1sen!2sjp')" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+  </div>
+  <!-- <agm-map [latitude]="lat" [longitude]="lng">
+    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+  </agm-map> -->
 
-<p *ngIf="isLocationAccessPermissionDenied">
-  Allow us location access for better recommendations! :)
-</p>
+  <div *ngIf="!isLocationAccessPermissionDenied">
+    Map works!
+    Your position: <a [href]="getPositionUrl()" target="_blank">{{position}}</a>
+  </div>
+  <a href="https://goo.gl/maps/nQG3JsgczweojfTDA" target="_blank">My favs</a>
+
+  <p *ngIf="isLocationAccessPermissionDenied">
+    Allow us location access for better recommendations! :)
+  </p>
