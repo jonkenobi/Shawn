@@ -54,6 +54,11 @@ export class AppComponent implements OnInit {
     this.suggestions = Array.from(set);
   }
 
+  onSearchCardClick(){
+    this.selected_attr = 'search'
+    this.suggestions = []
+  }
+
   getRandomArea(list: any) {
     const random_place = list[Math.floor(Math.random() * list.length)];
     return random_place;
