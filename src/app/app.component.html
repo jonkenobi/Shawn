@@ -24,9 +24,18 @@
     </div>
 
     <div
+      class="card card-for-random"
+      (click)="selected_attr = 'search'"
+      [class.highlight-card]="selected_attr == 'search'"
+    >
+      <mat-icon>search</mat-icon>
+      <span>Search</span>
+    </div>
+
+    <div
       class="card"
       [class.highlight-card]="selected_attr == 'italian'"
-      (click)="choose_place_by_attribute('italian')"
+      (click)="choosePlaceByAttribute('italian')"
     >
       <mat-icon aria-hidden="false" aria-label="Restaurant icon"
         >restaurant</mat-icon
@@ -35,7 +44,7 @@
     </div>
     <div
       class="card"
-      (click)="choose_place_by_attribute('western')"
+      (click)="choosePlaceByAttribute('western')"
       [class.highlight-card]="selected_attr == 'western'"
     >
       <mat-icon aria-hidden="false" aria-label="Drink icon"
@@ -46,7 +55,7 @@
 
     <div
       class="card"
-      (click)="choose_place_by_attribute('middle_east')"
+      (click)="choosePlaceByAttribute('middle_east')"
       [class.highlight-card]="selected_attr == 'middle_east'"
     >
       <mat-icon aria-hidden="false" aria-label="Drink icon"
@@ -56,7 +65,7 @@
     </div>
     <div
       class="card"
-      (click)="choose_place_by_attribute('asian')"
+      (click)="choosePlaceByAttribute('asian')"
       [class.highlight-card]="selected_attr == 'asian'"
     >
       <mat-icon aria-hidden="false" aria-label="Drink icon"
@@ -67,7 +76,7 @@
     <div
       class="card"
       [class.highlight-card]="selected_attr == 'mexican'"
-      (click)="choose_place_by_attribute('mexican')"
+      (click)="choosePlaceByAttribute('mexican')"
     >
       <mat-icon aria-hidden="false" aria-label="mexican icon"
         >local_pizza</mat-icon
@@ -77,7 +86,7 @@
 
     <div
       class="card"
-      (click)="choose_place_by_attribute('chinese')"
+      (click)="choosePlaceByAttribute('chinese')"
       [class.highlight-card]="selected_attr == 'chinese'"
     >
       <mat-icon aria-hidden="false" aria-label="chinese food icon"
@@ -88,7 +97,7 @@
 
     <div
       class="card"
-      (click)="choose_place_by_attribute('japanese')"
+      (click)="choosePlaceByAttribute('japanese')"
       [class.highlight-card]="selected_attr == 'japanese'"
     >
       <mat-icon aria-hidden="false" aria-label="japanese food icon"
@@ -99,7 +108,7 @@
 
     <div
       class="card"
-      (click)="choose_place_by_attribute('drinks')"
+      (click)="choosePlaceByAttribute('drinks')"
       [class.highlight-card]="selected_attr == 'drinks'"
     >
       <mat-icon aria-hidden="false" aria-label="Drink icon">local_bar</mat-icon>
@@ -117,7 +126,23 @@
     ></app-area-expansion-panel>
   </div>
 
-  <div class="suggestions" *ngIf="selected_attr != 'random'">
+
+  <div class="suggestions" *ngIf="selected_attr == 'search'">
+    <app-search-input-area (onSearch)="setSearchedAreas($event)"></app-search-input-area>
+
+      <app-area-expansion-panel
+      *ngFor="let suggestion of suggestions"
+      [suggestionClass]="getSuggestionClass(suggestion)"
+      [areaUrl]="getUrl(suggestion)"
+      [areaName]="suggestionName(suggestion)"
+      [places]="filterPlacesByArea(suggestion)"
+    ></app-area-expansion-panel>
+  </div>
+
+  <div
+    class="suggestions"
+    *ngIf="!['random', 'search'].includes(selected_attr)"
+  >
     <app-area-expansion-panel
       [suggestionClass]="'first-pick-suggestion'"
       areaName="一覽"

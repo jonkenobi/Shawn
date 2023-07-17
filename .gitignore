@@ -13,6 +13,12 @@
 # profiling files
 chrome-profiler-events*.json
 
+#Terraform
+.terraform
+.terraform.lock.hcl
+terraform.tfstate
+terraform.tfstate.backup
+
 # IDEs and editors
 /.idea
 .project
