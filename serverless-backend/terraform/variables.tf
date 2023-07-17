@@ -21,3 +21,8 @@ variable "shawn_get_places_function_name" {
   type        = string
   default     = "shawn-get-places"
 }
+
+variable "shawn_search_areas_function_name" {
+  type        = string
+  default     = "shawn-search-areas"
+}

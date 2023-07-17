@@ -10,6 +10,7 @@ resource "aws_api_gateway_rest_api" "api_gateway_rest_api" {
     title                                       = var.api_name
     get_area_function_invoke_arn = aws_lambda_function.get_areas.invoke_arn
     get_places_function_invoke_arn = aws_lambda_function.get_places.invoke_arn
+    search_areas_function_invoke_arn = aws_lambda_function.search_areas.invoke_arn
     # get_input_template_function_invoke_arn      = aws_lambda_function.get_input_template.invoke_arn
     # register_input_template_function_invoke_arn = aws_lambda_function.register_input_template.invoke_arn
     # format_service_function_invoke_arn          = aws_lambda_function.format_service.invoke_arn

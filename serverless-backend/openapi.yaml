@@ -50,6 +50,42 @@ paths:
               method.response.header.Access-Control-Allow-Methods: "'GET'"
               method.response.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
               method.response.header.Access-Control-Allow-Origin: "'*'"
+  /search/areas:
+      post:
+        tags:
+          - "Areas"
+        summary: "地域を検索"
+        requestBody:
+          $ref: '#/components/requestBodies/Area'
+        responses:
+          200:
+            description: "成功時のレスポンス"
+            content:
+              application/json:
+                schema:
+                  type: "array"
+                  items:
+                    $ref: "#/components/schemas/Area"
+        x-amazon-apigateway-integration:
+          uri: ${search_area_function_invoke_arn}
+          httpMethod: "POST"
+          type: "aws_proxy"
+      options:
+        description: Allow CORS
+        responses:
+          200:
+            $ref: '#/components/responses/cors'
+        x-amazon-apigateway-integration:
+          type: mock
+          requestTemplates:
+            application/json: "{ \"statusCode\": 200 }"
+          responses:
+            default:
+              statusCode: "200"
+              responseParameters:
+                method.response.header.Access-Control-Allow-Methods: "'GET'"
+                method.response.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+                method.response.header.Access-Control-Allow-Origin: "'*'"
   /user/places:
     get:
       tags:
@@ -132,7 +168,14 @@ components:
           type: "boolean"
         japanese:
           type: "boolean"
-
+  requestBodies:
+    Area:
+      type: "object"
+      properties:
+        attributes:
+          type: array
+          items:
+            type: string
   responses:
     cors:
       description: "200 response"

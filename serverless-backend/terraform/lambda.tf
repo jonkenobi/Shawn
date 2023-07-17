@@ -18,6 +18,15 @@ resource "aws_lambda_function" "get_places" {
   role = aws_iam_role.my_lambda_iam_role.arn
 }
 
+resource "aws_lambda_function" "search_areas" {
+  function_name = var.shawn_search_areas_function_name
+  filename      = "../app/${var.shawn_search_areas_function_name}.zip"
+
+  handler = "${var.shawn_search_areas_function_name}.handler"
+  runtime = "nodejs18.x"
+
+  role = aws_iam_role.my_lambda_iam_role.arn
+}
 # IAM role which dictates what other AWS services the Lambda function
 # may access.
 resource "aws_iam_role" "my_lambda_iam_role" {
@@ -53,6 +62,7 @@ resource "aws_lambda_permission" "apigw_lambda_permission" {
   for_each = toset([
     aws_lambda_function.get_areas.function_name,
     aws_lambda_function.get_places.function_name,
+    aws_lambda_function.search_areas.function_name,
   ])
 
   statement_id = "AllowAPIGatewayInvoke"
