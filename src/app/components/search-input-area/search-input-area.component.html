@@ -20,7 +20,7 @@
 -->
 
   <div *ngFor="let attribute of attributesOptions" class="input input-mat-checkbox">
-    <mat-checkbox
+    <mat-checkbox color="primary"
       (change)="onCheckboxChange($event, attribute.name)"
     >
       <span class="mat-checkbox-label">
